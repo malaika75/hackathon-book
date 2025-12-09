@@ -1,55 +1,64 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+Version change: 1.0.0 → 1.0.1
+Modified principles:
+- Accuracy: Updated to reflect user input
+- Clarity: Updated to reflect user input
+- Reproducibility: Updated to reflect user input
+- Rigor: Updated to reflect user input
+- Key Standards: Updated to reflect user input
+- Constraints: Updated to reflect user input
+Added sections: None
+Removed sections: None
+Templates requiring updates:
+- .specify/templates/plan-template.md: ⚠️ pending
+- .specify/templates/spec-template.md: ⚠️ pending
+- .specify/templates/tasks-template.md: ⚠️ pending
+- .specify/templates/commands/*.md: ⚠️ pending
+- README.md: ⚠️ pending
+- docs/quickstart.md: ⚠️ pending
+Follow-up TODOs: TODO(SUCCESS_CRITERIA): User input for success criteria was truncated ("All c"). Needs clarification.
+-->
+# Physical AI & Humanoid Robotics Textbook Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Accuracy
+Through verified references on robotics, ROS2, Gazebo, Isaac Sim, and AI integration.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Clarity
+For a university-level audience with computer science and robotics background.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Reproducibility
+All code snippets, simulations, and examples must be traceable and testable.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Rigor
+Prioritize peer-reviewed sources, official documentation, and standard robotics references.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Key Standards
+- All factual claims must be traceable to official docs or peer-reviewed articles
+- Citation format: APA style
+- Source types: minimum 50% peer-reviewed journals or official robotics documentation
+- Plagiarism check: 0% tolerance
+- Writing clarity: Flesch-Kincaid grade 10-12
+- Code examples must run and reproduce expected behavior
 
-### [PRINCIPLE_6_NAME]
+### Constraints
+- Word count per chapter: 3,000–5,000 words
+- Minimum sources per chapter: 10
+- Include diagrams, simulation screenshots, and relevant code
+- Format: Markdown for Docusaurus integration
 
+## Additional Rules
 
-[PRINCIPLE__DESCRIPTION]
+This section outlines further guidelines to ensure the quality and consistency of the textbook.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Development Workflow
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+The development workflow adheres to established practices for academic publishing and software development.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution supersedes all other practices. Amendments require documentation, approval, and a migration plan to ensure consistency. Compliance will be regularly reviewed.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.1 | **Ratified**: 2025-12-06 | **Last Amended**: 2025-12-06
