@@ -3,6 +3,7 @@
 
 import React, { ReactNode } from 'react';
 import Chatbot from '@site/src/components/Chatbot';
+import { TextSelectionHandler } from '@site/src/components/Chatbot/TextSelectionHandler';
 
 interface ChatbotWrapperProps {
   children: ReactNode;
@@ -42,6 +43,7 @@ export function ChatbotWrapper({ children }: ChatbotWrapperProps): React.JSX.Ele
   return (
     <>
       {children}
+      <TextSelectionHandler />
       <Chatbot />
     </>
   );
