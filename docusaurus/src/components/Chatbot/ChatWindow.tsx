@@ -18,12 +18,14 @@ export function ChatWindow({
 }: ChatWindowProps): React.JSX.Element {
   const { messages, isLoading, error, sendMessage, clearMessages } = useChat();
   const [inputValue, setInputValue] = useState('');
+  const [contextText, setContextText] = useState<string | undefined>(undefined);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   // Pre-fill with selected text if available
   useEffect(() => {
     if (selectedText && selectedText.trim()) {
       setInputValue(selectedText);
+      setContextText(selectedText); // Store as context for API call
       onSelectedTextConsumed?.();
     }
   }, [selectedText, onSelectedTextConsumed]);
@@ -34,8 +36,10 @@ export function ChatWindow({
     const content = inputValue.trim();
     if (!content || isLoading) return;
 
+    const context = contextText; // Capture context before clearing
     setInputValue('');
-    await sendMessage(content);
+    setContextText(undefined); // Clear context after capturing
+    await sendMessage(content, context);
 
     // Focus back on input after sending
     setTimeout(() => inputRef.current?.focus(), 100);
