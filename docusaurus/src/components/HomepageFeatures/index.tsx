@@ -11,32 +11,32 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'ROS 2 Fundamentals',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Master nodes, topics, services, actions, and package management.
+        Build your first robot applications from scratch.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Robotics Simulation',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Build robot models in Gazebo, URDF, physics engines, and sensors.
+        Simulate before deploying to real hardware.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'AI-Robot Brain',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        SLAM, perception, navigation, path planning, and manipulation.
+        Add intelligence to your robots.
       </>
     ),
   },
@@ -60,6 +60,9 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
+        <div className="text--center">
+          <Heading as="h2">What You Will Learn</Heading>
+        </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

@@ -1,30 +1,223 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Physical AI & Humanoid Robotics Textbook
+ * Professional Academic Theme
  */
 
-/* You can override the default Infima variables here. */
+/* Primary colors - Academic Navy */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #1e3a5f;
+  --ifm-color-primary-dark: #162d4a;
+  --ifm-color-primary-darker: #12253d;
+  --ifm-color-primary-darkest: #0d1a2b;
+  --ifm-color-primary-light: #2a4d7a;
+  --ifm-color-primary-lighter: #335c8c;
+  --ifm-color-primary-lightest: #3d6a9d;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(30, 58, 95, 0.1);
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-navbar-height: 64px;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark mode - Deep Blue */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #4a90d9;
+  --ifm-color-primary-dark: #3a7bc5;
+  --ifm-color-primary-darker: #306eb8;
+  --ifm-color-primary-darkest: #255a9e;
+  --ifm-color-primary-light: #5ba0e3;
+  --ifm-color-primary-lighter: #6bb0ed;
+  --ifm-color-primary-lightest: #7dc0f7;
+  --docusaurus-highlighted-code-line-bg: rgba(74, 144, 217, 0.2);
+}
+
+/* Sidebar styling - Professional Academic */
+.sidebar {
+  background: var(--ifm-menu-background);
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+  padding: 16px 0;
+}
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.menu__link {
+  border-radius: 6px;
+  margin: 2px 12px;
+  padding: 10px 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.menu__link--active {
+  border-left-color: var(--ifm-color-primary);
+  background: rgba(30, 58, 95, 0.08);
+}
+
+.menu__link:hover {
+  background: rgba(30, 58, 95, 0.05);
+  color: var(--ifm-color-primary);
+}
+
+.menu__link--active {
+  background: rgba(30, 58, 95, 0.12);
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  border-left-color: var(--ifm-color-primary);
+}
+
+/* Sidebar category headers */
+.menu__list-item-collapsible {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 16px 20px 8px;
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* Category labels in sidebar */
+.menu__list-item-collapsible:hover {
+  background: rgba(30, 58, 95, 0.05);
+}
+
+/* Navbar professional look */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Hero improvements */
+.hero {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+}
+
+.hero__title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero__subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+/* Module categories with distinct colors */
+.menu__list-item--collapsed .menu__link {
+  font-weight: 600;
+}
+
+/* Module 1: ROS 2 - Blue */
+[class*='module-ros2'] > .menu__link {
+  color: #1976d2;
+  font-weight: 700;
+}
+
+[class*='module-ros2'] .menu__link:hover,
+[class*='module-ros2'] .menu__link--active {
+  background: rgba(25, 118, 210, 0.15);
+}
+
+/* Module 2: Simulation - Orange */
+[class*='module-simulation'] > .menu__link {
+  color: #e65100;
+  font-weight: 700;
+}
+
+[class*='module-simulation'] .menu__link:hover,
+[class*='module-simulation'] .menu__link--active {
+  background: rgba(230, 81, 0, 0.15);
+}
+
+/* Module 3: AI - Purple */
+[class*='module-ai'] > .menu__link {
+  color: #7b1fa2;
+  font-weight: 700;
+}
+
+[class*='module-ai'] .menu__link:hover,
+[class*='module-ai'] .menu__link--active {
+  background: rgba(123, 31, 162, 0.15);
+}
+
+/* Module 4: VLA - Teal */
+[class*='module-vla'] > .menu__link {
+  color: #00796b;
+  font-weight: 700;
+}
+
+[class*='module-vla'] .menu__link:hover,
+[class*='module-vla'] .menu__link--active {
+  background: rgba(0, 121, 107, 0.15);
+}
+
+/* Resources - Gray */
+[class*='module-resources'] > .menu__link {
+  color: #616161;
+  font-weight: 700;
+}
+
+/* Card/admonition improvements */
+.alert {
+  border-radius: 8px;
+  border-left: 4px solid var(--ifm-color-primary);
+}
+
+.admonition-heading h5 {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Button improvements - Professional Academic */
+.button--primary {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.button--primary:hover {
+  background: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.25);
+}
+
+.button--secondary {
+  background: transparent;
+  border-color: white;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.button--secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.button--outline {
+  background: transparent;
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.button--outline:hover {
+  background: var(--ifm-color-primary);
+  color: white;
+}
+
+/* Hero buttons - keep default Docusaurus style */
+.hero .buttons {
+  margin-top: 24px;
+}
+
+.hero .buttons .button--lg {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
 }

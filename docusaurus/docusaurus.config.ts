@@ -41,22 +41,13 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -68,6 +59,9 @@ const config: Config = {
     ],
   ],
 
+  // Client modules - loads on ALL pages (homepage + docs)
+  clientModules: ['./src/components/Chatbot/index.tsx'],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
@@ -75,7 +69,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Physical AI & Robotics',
+      title: 'Physical AI Textbook',
       logo: {
         alt: 'Physical AI & Humanoid Robotics Textbook Logo',
         src: 'img/logo.svg',
@@ -85,9 +79,9 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Textbook',
+          label: 'Curriculum',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/docs/intro', label: 'Overview', position: 'left'},
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
@@ -99,11 +93,19 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Textbook',
+          title: 'Learning',
           items: [
             {
               label: 'Introduction',
               to: '/docs/intro',
+            },
+            {
+              label: 'Module 1: ROS 2',
+              to: '/docs/module1/chapter1-intro-architecture',
+            },
+            {
+              label: 'Module 2: Simulation',
+              to: '/docs/module2/chapter1-simulation-environments',
             },
           ],
         },
@@ -122,18 +124,22 @@ const config: Config = {
               label: 'Gazebo Sim',
               href: 'https://gazebosim.org/',
             },
+            {
+              label: 'MoveIt 2',
+              href: 'https://moveit.ros.org/',
+            },
           ],
         },
         {
-          title: 'More',
+          title: 'Community',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
             {
               label: 'GitHub',
               href: 'https://github.com/facebook/docusaurus',
+            },
+            {
+              label: 'ROS Discourse',
+              href: 'https://discourse.ros.org/',
             },
           ],
         },
