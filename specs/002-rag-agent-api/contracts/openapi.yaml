@@ -1,0 +1,162 @@
+openapi: 3.0.0
+info:
+  title: RAG Backend API
+  version: 1.0.0
+  description: FastAPI backend with RAG Agent for Physical AI Textbook Chatbot
+
+servers:
+  - url: http://localhost:8000
+    description: Development server
+
+paths:
+  /chat:
+    post:
+      summary: Normal chat query
+      description: Send a question and receive an answer with citations from the textbook
+      operationId: chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /chat-with-context:
+    post:
+      summary: Contextual chat with selected text
+      description: Send a question with selected text context
+      operationId: chatWithContext
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContextualChatRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /health:
+    get:
+      summary: Health check
+      description: Check if the service is running
+      operationId: healthCheck
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: healthy
+
+components:
+  schemas:
+    ChatRequest:
+      type: object
+      required:
+        - question
+      properties:
+        question:
+          type: string
+          description: User's question about the textbook
+          minLength: 1
+          maxLength: 1000
+          example: What is ROS2?
+
+    ContextualChatRequest:
+      type: object
+      required:
+        - question
+        - selectedText
+      properties:
+        question:
+          type: string
+          description: User's question
+          minLength: 1
+          maxLength: 1000
+        selectedText:
+          type: string
+          description: Text selected by user in the UI
+          minLength: 1
+          maxLength: 5000
+          example: ROS2 is the next generation of ROS...
+
+    ChatResponse:
+      type: object
+      properties:
+        answer:
+          type: string
+          description: Generated response to user's question
+          example: ROS2 is the Robot Operating System version 2...
+        citations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Citation'
+
+    Citation:
+      type: object
+      properties:
+        module:
+          type: string
+          example: Module 1
+        chapter:
+          type: string
+          example: Introduction to Robotics
+        section:
+          type: string
+          example: What is ROS2?
+        url:
+          type: string
+          example: /docs/module1/chapter1
+
+    ErrorResponse:
+      type: object
+      properties:
+        detail:
+          type: string
+          description: Error message
+
+tags:
+  - name: chat
+    description: Chat endpoints
+  - name: health
+    description: Health check

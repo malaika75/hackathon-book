@@ -1,0 +1,120 @@
+# Chatbot API Contract
+
+**Feature**: 003-rag-chatbot-frontend
+**Note**: This contract documents the frontend integration with the RAG backend (002-rag-agent-api)
+
+## OpenAPI Specification
+
+The RAG backend exposes the following endpoints (from 002-rag-agent-api):
+
+### POST /chat
+
+Ask a question about the textbook.
+
+```yaml
+/chats:
+  post:
+    summary: Chat with the textbook
+    operationId: chat
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - question
+            properties:
+              question:
+                type: string
+                description: User's question about the textbook
+                maxLength: 4000
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                answer:
+                  type: string
+                  description: AI-generated answer
+                sources:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Source'
+      '400':
+        description: Invalid request
+      '500':
+        description: Server error
+
+### POST /chat-with-context
+
+Ask a question with selected text context.
+
+```yaml
+/chat-with-context:
+  post:
+    summary: Chat with selected text context
+    operationId: chatWithContext
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - question
+              - selectedText
+            properties:
+              question:
+                type: string
+                maxLength: 4000
+              selectedText:
+                type: string
+                description: Text selected by user on the page
+                maxLength: 2000
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                answer:
+                  type: string
+                sources:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Source'
+```
+
+## Components
+
+```yaml
+components:
+  schemas:
+    Source:
+      type: object
+      properties:
+        documentId:
+          type: string
+        title:
+          type: string
+        section:
+          type: string
+        relevanceScore:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+```
+
+## Frontend Integration Notes
+
+- Base URL: Configure via environment variable or config (default: `http://localhost:8000`)
+- CORS: Backend already configured to allow Docusaurus origin
+- Error handling: Display user-friendly messages for all error codes
+- Timeout: 10 seconds for response (per SC-001)
