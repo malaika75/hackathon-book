@@ -1,30 +1,31 @@
-// Chatbot Configuration Constants
-
+// src/config.ts - SIMPLE & SAFE VERSION
 export const CHATBOT_CONFIG = {
-  // API Configuration - Change this to your backend URL in production
-  API_BASE_URL: 'http://localhost:8000',
+  // ✅ Local ke liye localhost, production ke liye HF URL
+  // Abhi ke liye hardcode kar rahe hain — baad mein env variable se replace kar sakte hain
+  API_BASE_URL: 'https://malaika909-rag-backend.hf.space',
+  
   API_ENDPOINTS: {
     CHAT: '/chat',
     CHAT_WITH_CONTEXT: '/chat-with-context',
   },
-  // Timeouts (in milliseconds)
+  
   TIMEOUTS: {
-    REQUEST: 60000, // 60 seconds - backend takes 15-30s for embedding + LLM
-    THEME_SWITCH: 500, // 500ms per SC-005
+    REQUEST: 60000,
+    THEME_SWITCH: 500,
   },
-  // UI Dimensions
+  
   DIMENSIONS: {
     WINDOW_WIDTH: 400,
     WINDOW_HEIGHT: 500,
     BUTTON_SIZE: 56,
     MOBILE_BREAKPOINT: 768,
   },
-  // Validation
+  
   VALIDATION: {
     MAX_MESSAGE_LENGTH: 4000,
     MAX_SELECTED_TEXT_LENGTH: 2000,
   },
-  // Storage Keys
+  
   STORAGE_KEYS: {
     MESSAGES: 'chatbot_messages',
     PREFERENCES: 'chatbot_preferences',
