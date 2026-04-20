@@ -27,7 +27,7 @@ export interface ChatRequest {
 }
 
 export interface ChatContextRequest extends ChatRequest {
-  selectedText: string;
+  selected_text: string; // Backend uses snake_case
 }
 
 export interface ChatSession {
