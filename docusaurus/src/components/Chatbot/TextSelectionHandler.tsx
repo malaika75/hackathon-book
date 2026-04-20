@@ -1,4 +1,4 @@
-// Text Selection Handler with native onclick
+// Text Selection Handler with React onClick
 
 import React, { useState, useEffect, useRef } from 'react';
 
@@ -49,18 +49,15 @@ export function TextSelectionHandler(): React.JSX.Element | null {
     };
   }, []);
 
-  // Use effect to attach native onclick when button is rendered
-  useEffect(() => {
-    if (buttonRef.current && selection) {
-      buttonRef.current.onclick = function() {
-        console.log('[Handler] BUTTON CLICKED!', selection.text);
-        (window as any).__SELECTED_TEXT = selection.text;
-        const evt = new CustomEvent('text-selected-action', { detail: { text: selection.text } });
-        document.dispatchEvent(evt);
-        setSelection(null);
-      };
-    }
-  }, [selection]);
+  // Handle button click using React onClick
+  const handleButtonClick = () => {
+    if (!selection) return;
+    console.log('[Handler] BUTTON CLICKED!', selection.text);
+    (window as any).__SELECTED_TEXT = selection.text;
+    const evt = new CustomEvent('text-selected-action', { detail: { text: selection.text } });
+    document.dispatchEvent(evt);
+    setSelection(null);
+  };
 
   if (!selection) return null;
 
@@ -68,6 +65,7 @@ export function TextSelectionHandler(): React.JSX.Element | null {
     <button
       ref={buttonRef}
       type="button"
+      onClick={handleButtonClick}
       style={{
         position: 'fixed',
         left: selection.x,
