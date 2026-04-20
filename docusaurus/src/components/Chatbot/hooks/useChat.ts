@@ -85,7 +85,7 @@ export function useChat(): UseChatReturn {
       if (selectedText && selectedText.trim()) {
         response = await sendChatWithContext({
           question: content,
-          selectedText: selectedText,
+          selected_text: selectedText, // Backend expects snake_case
         });
       } else {
         response = await sendChatMessage({ question: content });
@@ -93,7 +93,7 @@ export function useChat(): UseChatReturn {
 
       // Handle empty response
       const answerText = response?.answer || 'No response received';
-      const sourcesList = response?.sources || [];
+      const sourcesList = response?.citations || [];
 
       const assistantMessage: ChatMessage = {
         id: generateId(),
